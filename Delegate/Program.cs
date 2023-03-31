@@ -12,28 +12,67 @@
     //public delegate void Cal(int a, int b);
 
     //
-    public delegate void Calculation(int a, int b);
-   
+    //public delegate void Calculation(int a, int b);
+
     //Multpile delegates
-    public delegate void showDelegate();
-    public delegate void hideDelegate(int num);
-    
+
+    //public delegate void showDelegate();
+    //public delegate void hideDelegate(int num);
+
+    //Multi Cast delegates
+
+    public delegate void Calculation(int a, int b);
+
     class Program
     {
-        public static void Square(int num) 
+        // mulptiple delegate starts here
+        //public static void Square(int num) 
+        //{
+        //    int squares = num * num;
+        //    Console.WriteLine("Square of {0} is {1}",num,squares);
+        //}
+        //public static void Cube(int num)
+        //{
+        //    int squares = num * num * num;
+        //    Console.WriteLine("Cube of {0} is {1}", num, squares);
+        //}
+        //public static void show()
+        //{
+        //    Console.WriteLine("Show delegate Object");
+        //}
+
+        // mulptiple delegate ends here
+
+
+        // Multi Cast delegate starts here
+
+
+        public static void Add(int a, int b)
         {
-            int squares = num * num;
-            Console.WriteLine("Square of {0} is {1}",num,squares);
+            int result = a + b;
+            Console.WriteLine("Addition result is {0}", result);
         }
-        public static void Cube(int num)
+        public static void Sub(int a, int b)
         {
-            int squares = num * num * num;
-            Console.WriteLine("Cube of {0} is {1}", num, squares);
+            int result = a - b;
+            Console.WriteLine("Subtraction result is {0}", result);
         }
-        public static void show()
+        public static void Mul(int a, int b)
         {
-            Console.WriteLine("Show delegate Object");
-        } 
+            int result = a * b;
+            Console.WriteLine("Multiplication result is {0}", result);
+        }
+        public static void Div(int a, int b)
+        {
+            int result = a / b;
+            Console.WriteLine("Division result is {0}", result);
+        }
+
+
+        // Multi Cast delegate starts here
+
+
+
         //public static void Add(int a,int b)
         //{
         //    int result = a + b;
@@ -81,17 +120,25 @@
             //Only one method should be passed to delegate objects to avoid any other method to be pointed
 
 
-            showDelegate showDelegate = new showDelegate(show);
-            showDelegate.Invoke();
+            //showDelegate showDelegate = new showDelegate(show);
+            //showDelegate.Invoke();
 
 
             //Multiple delegates
-            hideDelegate hideDelegate = new hideDelegate(Square);
-            hideDelegate.Invoke(2);
-            hideDelegate = Cube;
-            hideDelegate.Invoke(3);
+            //hideDelegate hideDelegate = new hideDelegate(Square);
+            //hideDelegate.Invoke(2);
+            //hideDelegate = Cube;
+            //hideDelegate.Invoke(3);
 
             //calculation.Invoke(9,8);
+
+
+            //Multi Cast
+            Calculation calculation = new Calculation(Add);
+            calculation += Sub;
+            calculation += Mul;
+            calculation -= Div;
+            calculation.Invoke(100, 50);
         }
     }
 }
