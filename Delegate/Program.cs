@@ -5,6 +5,7 @@
     //it should have same signature as that of function pointed to
     //its purpose is to encapsulate method in a class
     //more than one function
+    // Delegates improves the purformance of application
 
     public delegate void Calculation(int a, int b); 
     class Program
